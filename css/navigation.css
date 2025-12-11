@@ -1,0 +1,173 @@
+/* ========================================
+   NAVIGATION - MODERN STICKY NAVBAR
+   Transparent → Solid on scroll, active indicators
+======================================== */
+
+/* Navbar Container */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: var(--space-4) var(--space-6);
+
+    /* Initial state: Transparent with blur */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    /* Smooth transitions */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Subtle border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar when scrolled */
+#navbar.scrolled {
+    background: rgba(245, 240, 232, 0.95);  /* var(--color-secondary) with opacity */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196, 165, 130, 0.15);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    padding: var(--space-3) var(--space-6);
+}
+
+/* Nav Container */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Nav Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);  /* 24px between links */
+
+    /* Mobile: rounded background */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: var(--space-3) var(--space-6);
+    border-radius: 50px;
+}
+
+/* When navbar is scrolled, remove mobile background */
+#navbar.scrolled .nav-links {
+    background: transparent;
+    backdrop-filter: none;
+}
+
+/* Individual Nav Link */
+.nav-link {
+    position: relative;
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    letter-spacing: var(--tracking-wide);
+    padding: var(--space-2) var(--space-3);
+    transition: all 0.3s ease;
+}
+
+/* Nav links when scrolled - dark text */
+#navbar.scrolled .nav-link {
+    color: var(--color-dark);
+}
+
+/* Hover State */
+.nav-link:hover {
+    color: var(--color-primary-light);
+    transform: translateY(-1px);
+}
+
+#navbar.scrolled .nav-link:hover {
+    color: var(--color-primary);
+}
+
+/* Active Link Indicator - Underline Effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: var(--color-white);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar.scrolled .nav-link::after {
+    background: var(--color-primary);
+}
+
+/* Active state - show underline */
+.nav-link.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Hover also shows underline */
+.nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: var(--space-3);  /* 12px on tablet */
+        padding: var(--space-2) var(--space-4);
+    }
+
+    .nav-link {
+        font-size: var(--text-xs);
+        padding: var(--space-1) var(--space-2);
+    }
+
+    #navbar {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    #navbar.scrolled {
+        padding: var(--space-2) var(--space-4);
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: var(--space-2);  /* 8px on mobile */
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-xs);
+    }
+
+    .nav-link {
+        font-size: 0.7rem;  /* Smaller on mobile */
+        padding: var(--space-1);
+    }
+
+    #navbar {
+        padding: var(--space-2) var(--space-3);
+    }
+}
+
+/* ========================================
+   SMOOTH SCROLL BEHAVIOR
+======================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: Custom scroll padding to account for fixed navbar */
+html {
+    scroll-padding-top: 80px;
+}

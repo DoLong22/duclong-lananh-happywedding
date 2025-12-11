@@ -1,0 +1,868 @@
+/* Wedding Details - Elegant Timeline Style (Icon | Line | Info) */
+
+.wedding-details-section {
+  padding: 50px 0;
+}
+
+/* ========== INVITATION CARD ========== */
+
+.invitation-card {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.invitation-border {
+  position: relative;
+  padding: 80px 70px;
+  background:
+    /* Border image overlay */
+    url('../assets/border.png') no-repeat center/100% 100%,
+    /* Content background - matches outer section background */
+    var(--color-secondary);
+
+  border-radius: 4px;
+
+  /* Soft outer shadow for depth */
+  box-shadow: 0 8px 32px #f5f0e8;
+}
+
+/* Remove old pseudo-elements */
+.invitation-border::before {
+  content: none;
+}
+
+.invitation-border::after {
+  content: none;
+}
+
+/* Ensure content is above decorations */
+.invitation-border > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Hide corner decorations - border image has its own decorations */
+.corner-decoration {
+  display: none;
+}
+
+/* Logo/Monogram - Top Center */
+.invitation-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Wedding Logo Image */
+.wedding-logo-image {
+  width: 180px;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 8px rgba(196, 165, 130, 0.15));
+}
+
+/* Family Header - 2 columns below logo (always side by side) */
+.family-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 25px;
+}
+
+.family-side {
+  text-align: center;
+}
+
+.family-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.family-member {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 5px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.logo-circle {
+  width: 110px;
+  height: 110px;
+  border: 3px solid var(--color-primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-style: italic;
+  color: var(--color-primary-dark);
+  margin: 0 auto 10px;
+  background: linear-gradient(135deg, #fdfbf7, #ffffff);
+  box-shadow: 0 4px 15px rgba(168, 146, 109, 0.2);
+}
+
+.couple-names {
+  font-size: 1rem;
+  color: #8b7a63;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Main Content */
+.invitation-content {
+  text-align: center;
+}
+
+.invitation-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-primary-dark);
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.invitation-venue {
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+/* Address Link - Clickable */
+.invitation-address-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.invitation-address-link:hover {
+  background: rgba(168, 146, 109, 0.1);
+  color: #5f5244;
+}
+
+.invitation-address-link:hover .address-map-icon {
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Map Icon */
+.address-map-icon {
+  color: var(--color-primary-dark);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+/* Date Time Section */
+.invitation-datetime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  background: rgba(168, 146, 109, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(168, 146, 109, 0.2);
+}
+
+.invitation-time {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.time-label {
+  font-size: 0.65rem;
+  color: #8b7a63;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.time-value {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: #5f5244;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.invitation-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 20px;
+  border-left: 2px solid rgba(168, 146, 109, 0.3);
+}
+
+.date-day {
+  font-size: 0.75rem;
+  color: #8b7a63;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.date-divider {
+  display: none;
+}
+
+.date-value {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: #5f5244;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Map Button - DEPRECATED (replaced with inline icon) */
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .invitation-border {
+    padding: 70px 60px;
+  }
+
+  .invitation-logo {
+    margin-bottom: 18px;
+  }
+
+  .family-header {
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .family-title {
+    font-size: 1.4rem;
+  }
+
+  .family-member {
+    font-size: 0.9rem;
+  }
+
+  .logo-circle {
+    width: 95px;
+    height: 95px;
+    font-size: 2.4rem;
+  }
+
+  .wedding-logo-image {
+    width: 150px;
+  }
+
+  .couple-names {
+    font-size: 0.9rem;
+  }
+
+  .invitation-venue {
+    font-size: 2.8rem;
+  }
+
+  .invitation-address-link {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .address-map-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .invitation-datetime {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .invitation-date {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 10px;
+    border-top: 2px solid rgba(168, 146, 109, 0.3);
+  }
+
+  .time-value {
+    font-size: 1.4rem;
+  }
+
+  .date-value {
+    font-size: 1.1rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .invitation-card {
+    margin-bottom: 30px;
+  }
+
+  .invitation-border {
+    padding: 60px 30px;
+  }
+
+  .invitation-logo {
+    margin-bottom: 15px;
+  }
+
+  .family-header {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .family-title {
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+  }
+
+  .family-member {
+    font-size: 0.8rem;
+  }
+
+  .logo-circle {
+    width: 85px;
+    height: 85px;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .wedding-logo-image {
+    width: 130px;
+  }
+
+  .couple-names {
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+  }
+
+  .invitation-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+
+  .invitation-venue {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+  }
+
+  .invitation-address-link {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .address-map-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .invitation-datetime {
+    padding: 10px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .time-value {
+    font-size: 1.3rem;
+  }
+
+  .date-value {
+    font-size: 1rem;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+
+/* Keyframes for fade in and slide up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for line drawing using scaleY - draw and hold, then reset */
+@keyframes drawLine {
+  0% {
+    transform: translateX(-50%) scaleY(0);
+  }
+  25% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  95% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  100% {
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+
+/* Keyframes for pulse effect on dots */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Keyframes for dot appear - appear and hold, then instant reset */
+@keyframes dotAppear {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  95% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Section Header - Elegant Title */
+.dress-code-header,
+.timeline-header {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+  /* margin-bottom: 35px; */
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Elegant Timeline Container */
+.timeline-elegant {
+  width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* Additional centering for location and info sections */
+.timeline-locations,
+.info-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Timeline Item - 3 Column Layout - Symmetric Design */
+.timeline-item-elegant {
+  display: grid;
+  grid-template-columns: 150px 40px 150px;
+  align-items: start;
+  margin-bottom: 10px;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.timeline-item-elegant:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.timeline-item-elegant:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.timeline-item-elegant:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.timeline-item-elegant:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.timeline-item-elegant:last-child {
+  margin-bottom: 0;
+}
+
+/* Left: Icon */
+.timeline-icon-left {
+  text-align: center;
+  font-size: 2.5rem;
+  opacity: 0.8;
+  filter: grayscale(50%);
+  padding-top: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Icon Hover Effects - Remove grayscale, scale up */
+.timeline-icon-left:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Middle: Vertical Line */
+.timeline-line-middle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.timeline-line-middle::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: -40px;
+  width: 2px;
+  background: #c4b59a;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  animation: drawLine 4s ease-in-out infinite;
+}
+
+.timeline-item-elegant:last-child .timeline-line-middle::before {
+  display: none;
+}
+
+/* Sequential delays for line drawing - loop continuously */
+.timeline-item-elegant:nth-child(1) .timeline-line-middle::before {
+  animation-delay: 0s;
+}
+
+.timeline-item-elegant:nth-child(2) .timeline-line-middle::before {
+  animation-delay: 0.5s;
+}
+
+.timeline-item-elegant:nth-child(3) .timeline-line-middle::before {
+  animation-delay: 1s;
+}
+
+/* Line dot/connector with continuous appear and pulse animation */
+.timeline-line-middle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary-dark);
+  border-radius: 50%;
+  border: 2px solid #f5f0e8;
+  z-index: 1;
+  animation: dotAppear 4s ease-in-out infinite;
+}
+
+/* Sequential delays for dots - sync with lines */
+.timeline-item-elegant:nth-child(1) .timeline-line-middle::after {
+  animation-delay: 0.3s;
+}
+
+.timeline-item-elegant:nth-child(2) .timeline-line-middle::after {
+  animation-delay: 0.8s;
+}
+
+.timeline-item-elegant:nth-child(3) .timeline-line-middle::after {
+  animation-delay: 1.3s;
+}
+
+.timeline-item-elegant:nth-child(4) .timeline-line-middle::after {
+  animation-delay: 1.8s;
+}
+
+/* Right: Time + Description */
+.timeline-info-right {
+  padding-top: 5px;
+}
+
+.timeline-time-elegant {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5f5244;
+  margin-bottom: 5px;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-desc-elegant {
+  font-size: 1.1rem;
+  color: #8b7a63;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect on timeline item - highlight text */
+.timeline-item-elegant:hover .timeline-time-elegant {
+  color: var(--color-primary-dark);
+  transform: translateX(5px);
+}
+
+.timeline-item-elegant:hover .timeline-desc-elegant {
+  color: #5f5244;
+}
+
+/* Location Info Below Timeline */
+.timeline-locations {
+  max-width: 600px;
+  margin: 50px auto 0;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(168, 146, 109, 0.3);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 1s forwards;
+}
+
+.location-item {
+  padding: 10px 0;
+  color: #666;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid rgba(168, 146, 109, 0.2);
+  transition: padding-left 0.3s ease, background 0.3s ease;
+}
+
+.location-item:hover {
+  padding-left: 10px;
+  background: rgba(168, 146, 109, 0.05);
+  border-radius: 5px;
+}
+
+.location-item:last-child {
+  border-bottom: none;
+}
+
+.location-item strong {
+  color: #5f5244;
+}
+
+.location-link {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.location-link:hover {
+  color: #5f5244;
+  text-decoration: underline;
+}
+
+/* Info Box - Compact */
+.info-box {
+  padding: 25px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 1.2s forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Info box hover effect */
+.info-box:hover {
+  transform: translateY(-5px);
+}
+
+.info-box h3 {
+  color: #5f5244;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-family: var(--font-heading);
+}
+
+.info-box p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .wedding-details-section {
+    padding: 40px 0;
+  }
+  .dress-code-header,
+  .timeline-header {
+    font-size: 2.8rem;
+    /* margin-bottom: 40px; */
+  }
+
+  .timeline-item-elegant {
+    grid-template-columns: 120px 35px 120px;
+    margin-bottom: 10px;
+  }
+
+  .timeline-icon-left {
+    font-size: 2rem;
+  }
+
+  .timeline-line-middle::before {
+    bottom: -35px;
+  }
+
+  .timeline-line-middle::after {
+    width: 8px;
+    height: 8px;
+    top: 12px;
+  }
+
+  .timeline-time-elegant {
+    font-size: 1.3rem;
+  }
+
+  .timeline-desc-elegant {
+    font-size: 1rem;
+  }
+
+  .timeline-locations {
+    margin-top: 40px;
+    padding: 20px;
+  }
+
+  .location-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-box {
+    padding: 20px;
+  }
+
+  .info-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .info-box p {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .wedding-details-section {
+    padding: 30px 0;
+  }
+  .dress-code-header,
+  .timeline-header {
+    font-size: 2.2rem;
+    /* margin-bottom: 35px; */
+  }
+
+  .timeline-elegant {
+    padding: 0 10px;
+  }
+
+  .timeline-item-elegant {
+    grid-template-columns: 100px 30px 100px;
+    margin-bottom: 10px;
+  }
+
+  .timeline-icon-left {
+    font-size: 1.8rem;
+    padding-top: 3px;
+  }
+
+  .timeline-line-middle::before {
+    bottom: -30px;
+    width: 1.5px;
+  }
+
+  .timeline-line-middle::after {
+    width: 7px;
+    height: 7px;
+    top: 10px;
+    border-width: 1.5px;
+  }
+
+  .timeline-info-right {
+    padding-top: 3px;
+  }
+
+  .timeline-time-elegant {
+    font-size: 1.15rem;
+    margin-bottom: 3px;
+  }
+
+  .timeline-desc-elegant {
+    font-size: 0.9rem;
+  }
+
+  .timeline-locations {
+    margin-top: 35px;
+    padding: 18px;
+  }
+
+  .location-item {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+
+  .location-link {
+    font-size: 0.8rem;
+  }
+
+  .info-box {
+    padding: 18px;
+  }
+
+  .info-box h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .info-box p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 7px;
+  }
+}

@@ -1,0 +1,171 @@
+/* ========================================
+   BASE STYLES & TYPOGRAPHY
+   Modern, consistent typography system
+======================================== */
+
+/* Base Styles & Reset */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    font-weight: var(--font-normal);
+    background-color: #F5F0E8;
+    color: #3d4a42;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* === TYPOGRAPHY HIERARCHY === */
+
+/* Headings - Use Cormorant Garamond */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+    color: inherit;
+    margin: 0;
+}
+
+h1 {
+    font-size: var(--text-5xl);  /* 49px */
+}
+
+h2 {
+    font-size: var(--text-4xl);  /* 39px */
+}
+
+h3 {
+    font-size: var(--text-3xl);  /* 31px */
+}
+
+h4 {
+    font-size: var(--text-2xl);  /* 25px */
+}
+
+h5 {
+    font-size: var(--text-xl);   /* 20px */
+}
+
+h6 {
+    font-size: var(--text-lg);   /* 18px */
+}
+
+/* Paragraphs */
+p {
+    margin: 0 0 1rem 0;
+    line-height: var(--leading-normal);
+}
+
+/* Utility Classes */
+.font-heading {
+    font-family: var(--font-heading);
+}
+
+.font-body {
+    font-family: var(--font-body);
+}
+
+/* Legacy support - keep for backward compatibility but prefer direct h1-h6 */
+.font-serif {
+    font-family: var(--font-heading);
+}
+
+/* ========================================
+   COMMON SECTION STYLES
+   Using spacing variables for consistency
+======================================== */
+.section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ========================================
+   COLOR UTILITY CLASSES
+   Modern color system with CSS variables
+======================================== */
+
+/* Text Colors */
+.text-primary { color: var(--color-primary); }
+.text-primary-light { color: var(--color-primary-light); }
+.text-primary-dark { color: var(--color-primary-dark); }
+
+.text-accent { color: var(--color-accent); }
+.text-accent-light { color: var(--color-accent-light); }
+
+.text-dark { color: var(--color-dark); }
+.text-gray { color: var(--color-gray); }
+.text-gray-light { color: var(--color-gray-light); }
+
+.text-white { color: var(--color-white); }
+
+/* Background Colors */
+.bg-primary { background-color: var(--color-primary); }
+.bg-primary-light { background-color: var(--color-primary-light); }
+.bg-primary-dark { background-color: var(--color-primary-dark); }
+
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-secondary-light { background-color: var(--color-secondary-light); }
+.bg-secondary-dark { background-color: var(--color-secondary-dark); }
+
+.bg-accent { background-color: var(--color-accent); }
+
+.bg-white { background-color: var(--color-white); }
+
+/* Border Colors */
+.border-primary { border-color: var(--color-primary); }
+.border-light { border-color: var(--border-light); }
+.border-medium { border-color: var(--border-medium); }
+
+/* Legacy Support - Deprecated, use new classes above */
+.burgundy-text { color: var(--color-primary-dark); }
+.burgundy-bg { background-color: var(--color-primary-dark); }
+.gold-text { color: var(--color-primary); }
+.gold-border { border-color: var(--color-primary); }
+.sage-text { color: var(--color-primary-dark); }
+.sage-bg { background-color: var(--color-primary-dark); }
+.celery-text { color: var(--color-primary); }
+.celery-bg { background-color: var(--color-primary); }
+.beige-bg { background-color: var(--color-secondary-dark); }
+
+/* Button Styles */
+.btn-sage {
+    /* Vibrant gradient for better visibility and energy */
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+    );
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 4px 12px rgba(196, 165, 130, 0.4),
+                0 8px 20px rgba(196, 165, 130, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-sage:hover {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-light) 0%,
+        var(--color-primary) 100%
+    );
+    box-shadow: 0 6px 16px rgba(196, 165, 130, 0.5),
+                0 12px 28px rgba(196, 165, 130, 0.4);
+    transform: translateY(-2px);
+}

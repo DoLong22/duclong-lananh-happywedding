@@ -1,0 +1,106 @@
+/* Guestbook Styles */
+.guestbook-entry {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Glass effect for form */
+.glass-subtle {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+/* Minimal input styling */
+.minimal-input {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(139, 115, 85, 0.15);
+    transition: all 0.3s ease;
+}
+
+.minimal-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(139, 115, 85, 0.3);
+    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.05);
+}
+
+/* Message cards */
+.message-card {
+    margin-bottom: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.message-card:last-child {
+    border-bottom: none;
+}
+
+.message-card:hover {
+    padding-left: 1rem;
+    border-left: 3px solid rgba(139, 115, 85, 0.4);
+}
+
+/* Scroll container */
+.scroll-container {
+    position: relative;
+    height: 500px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+/* Hide scrollbar */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Fade gradient at bottom */
+.scroll-wrapper {
+    position: relative;
+}
+
+.scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80px;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(to top,
+        rgba(232, 222, 208, 1) 0%,
+        rgba(232, 222, 208, 0.9) 20%,
+        rgba(232, 222, 208, 0.6) 50%,
+        rgba(232, 222, 208, 0) 100%
+    );
+}
+
+/* Message text styling */
+.message-text {
+    line-height: 1.7;
+    color: #4A4A4A;
+}
+
+.message-author {
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.3px;
+}
+
+/* Optimize guestbook entry spacing on mobile */
+@media (max-width: 768px) {
+    .guestbook-entry {
+        padding: var(--space-3);  /* 12px */
+        margin-bottom: var(--space-3);  /* 12px */
+    }
+    .scroll-container {
+        height: 400px;
+    }
+}

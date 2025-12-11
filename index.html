@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lưu Ngày Đặc Biệt | Long & LAnh</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons - Modern SVG Icon Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts - Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/design-tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/invitation.css" />
+    <link rel="stylesheet" href="css/wedding-details.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/gallery-vintage.css" />
+    <link rel="stylesheet" href="css/guestbook.css" />
+    <link rel="stylesheet" href="css/guestbook-minimalist.css" />
+    <link rel="stylesheet" href="css/rsvp.css" />
+    <link rel="stylesheet" href="css/gift.css" />
+    <link rel="stylesheet" href="css/thank-you.css" />
+    <link rel="stylesheet" href="css/section-flow.css" />
+  </head>
+  <body>
+    <!-- ========================================
+         NAVIGATION - MODERN STICKY NAVBAR
+    ========================================= -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="nav-links">
+          <a href="#home" class="nav-link">Trang Chủ</a>
+          <a href="#story" class="nav-link">Câu Chuyện</a>
+          <a href="#details" class="nav-link">Thông Tin</a>
+          <a href="#gallery" class="nav-link">Album Ảnh</a>
+          <a href="#guestbook" class="nav-link">Sổ Lưu Bút</a>
+          <a href="#rsvp" class="nav-link">Xác Nhận</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION - MODERN DESIGN
+    ========================================= -->
+    <section id="home" class="hero">
+      <!-- Hero Content -->
+      <div class="hero-content reveal visible">
+        <p class="hero-subtitle">We Get Married!</p>
+        <h1 class="hero-title">Đức Long & Lan Anh</h1>
+        <p class="hero-date">28.12.2025</p>
+        <a href="#rsvp" class="hero-cta">Xác Nhận Tham Dự</a>
+      </div>
+
+      <!-- Countdown -->
+      <div class="hero-countdown reveal">
+        <h3 class="font-heading">Đếm Ngược Đến Ngày Trọng Đại</h3>
+        <div
+          id="countdown"
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto"
+        >
+          <div class="p-4 bg-white/20 rounded-lg shadow-lg">
+            <div id="days" class="text-5xl font-heading">0</div>
+            <div class="text-sm tracking-widest uppercase">Ngày</div>
+          </div>
+          <div class="p-4 bg-white/20 rounded-lg shadow-lg">
+            <div id="hours" class="text-5xl font-heading">0</div>
+            <div class="text-sm tracking-widest uppercase">Giờ</div>
+          </div>
+          <div class="p-4 bg-white/20 rounded-lg shadow-lg">
+            <div id="minutes" class="text-5xl font-heading">0</div>
+            <div class="text-sm tracking-widest uppercase">Phút</div>
+          </div>
+          <div class="p-4 bg-white/20 rounded-lg shadow-lg">
+            <div id="seconds" class="text-5xl font-heading">0</div>
+            <div class="text-sm tracking-widest uppercase">Giây</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator">
+        <svg
+          class="w-6 h-6 text-white"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========================================
+         OUR STORY - INVITATION STYLE
+    ========================================= -->
+    <section id="story" class="invitation-section">
+      <div class="mx-auto max-w-6xl px-2">
+        <!-- Header -->
+        <div class="text-center mb-12 reveal">
+          <h2 class="invitation-title">TRÂN TRỌNG KÍNH MỜI</h2>
+          <p class="invitation-guestname">KHÁCH QUÝ</p>
+          <h3 class="invitation-heading">ĐẾN DỰ BUỔI LỄ CƯỚI CỦA</h3>
+        </div>
+
+        <!-- Photos Grid -->
+        <div class="invitation-photos reveal">
+          <!-- Bride Photo -->
+          <div class="invitation-photo-card bride-card">
+            <div class="photo-label">
+              <span class="label-script">Cô dâu</span>
+              <h1 class="label-name">LAN ANH</h1>
+            </div>
+            <div class="photo-frame">
+              <img src="album/co-dau.jpg" alt="Cô dâu" class="invitation-img" />
+            </div>
+          </div>
+
+          <!-- Couple Photo -->
+          <div class="invitation-photo-card couple-card">
+            <div class="photo-frame">
+              <img src="album/chu-re.jpg" alt="Chú rể" class="invitation-img" />
+            </div>
+            <div class="photo-label">
+              <span class="label-script">Chú rể</span>
+              <h1 class="label-name">ĐỨC LONG</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- Love Story Text -->
+        <div class="invitation-text reveal">
+          <p class="text-center max-w-3xl mx-auto leading-relaxed">
+            Chúng tôi gặp nhau như một sự tình cờ, nhưng lại ở bên nhau như một
+            điều đã được định sẵn.
+          </p>
+          <p class="text-center max-w-3xl mx-auto leading-relaxed mt-2">
+            Từ những tin nhắn vu vơ, những buổi hẹn hò giản dị, tình cảm lớn lên
+            từng ngày.
+          </p>
+          <p class="text-center max-w-3xl mx-auto leading-relaxed mt-2">
+            Và giờ đây, chúng tôi quyết định cùng nhau viết tiếp câu chuyện ấy,
+            bằng một đám cưới trọn vẹn yêu thương.
+          </p>
+        </div>
+
+        <!-- Bottom Couple Photo -->
+        <div class="invitation-bottom-photo reveal">
+          <img
+            src="album/le-cuoi-avatar.png"
+            alt="Đức Long & Lan Anh"
+            class="bottom-couple-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Transition Quote -->
+    <div class="transition-quote" style="background: #f5f0e8">
+      <div class="transition-quote-text">
+        Và giờ đây, chúng tôi trân trọng mời bạn đến chung vui cùng gia đình...
+      </div>
+    </div>
+
+    <!-- ========================================
+         WEDDING DETAILS - TIMELINE
+    ========================================= -->
+    <section
+      id="details"
+      class="wedding-details-section"
+      style="background: #f5f0e8"
+    >
+      <div class="container mx-auto max-w-6xl">
+        <!-- Wedding Invitation Card -->
+        <div class="invitation-card reveal">
+          <!-- Decorative Border -->
+          <div class="invitation-border">
+            <!-- Logo & Couple Names - Top -->
+            <div class="invitation-logo">
+              <img
+                src="assets/logo.png"
+                alt="Long & Lan Anh Wedding Logo"
+                class="wedding-logo-image"
+              />
+            </div>
+
+            <!-- Family Info - Below -->
+            <div class="family-header">
+              <div class="family-side">
+                <h3 class="family-title">Nhà Gái</h3>
+                <p class="family-member">Bố: Nguyễn Đình Hà</p>
+                <p class="family-member">Mẹ: Nguyễn Thị Phương</p>
+              </div>
+
+              <div class="family-side">
+                <h3 class="family-title">Nhà Trai</h3>
+                <p class="family-member">Bố: Đỗ Ngọc Luân</p>
+                <p class="family-member">Mẹ: Vũ Thị Soi</p>
+              </div>
+            </div>
+
+            <!-- Main Invitation Content -->
+            <div class="invitation-content">
+              <h4 class="invitation-subtitle">ĐƯỢC TỔ CHỨC TẠI</h4>
+              <h2 id="venue-name" class="invitation-venue">Tư Gia Nhà Trai</h2>
+              <a
+                id="venue-address-link"
+                href="https://maps.app.goo.gl/FUcRsnBUqDfH2cQz8"
+                target="_blank"
+                class="invitation-address-link"
+              >
+                <span id="venue-address"
+                  >Thôn Liên Trung, Xã Xuân Trường, Tỉnh Ninh Bình</span
+                >
+                <svg
+                  class="address-map-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="10" r="3" />
+                  <path
+                    d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"
+                  />
+                </svg>
+              </a>
+
+              <div class="invitation-datetime">
+                <div class="invitation-time">
+                  <span class="time-label">VÀO LÚC</span>
+                  <span id="event-time" class="time-value">10:30</span>
+                </div>
+                <div class="invitation-date">
+                  <span id="event-day" class="date-day">CHỦ NHẬT</span>
+                  <span class="date-divider">|</span>
+                  <span id="event-date" class="date-value">28.12.2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="timeline-section">
+          <div class="section-header reveal">
+            <p class="timeline-header">Lịch Trình</p>
+          </div>
+
+          <!-- Elegant Timeline -->
+          <div class="timeline-elegant reveal">
+            <div class="timeline-item-elegant">
+              <div class="timeline-icon-left timeline-icon">
+                <i data-lucide="car"></i>
+              </div>
+              <div class="timeline-line-middle"></div>
+              <div class="timeline-info-right">
+                <div class="timeline-time-elegant">08:00</div>
+                <div class="timeline-desc-elegant">Đón Dâu</div>
+              </div>
+            </div>
+
+            <div class="timeline-item-elegant">
+              <div class="timeline-icon-left timeline-icon">
+                <i data-lucide="flower"></i>
+              </div>
+              <div class="timeline-line-middle"></div>
+              <div class="timeline-info-right">
+                <div class="timeline-time-elegant">10:00</div>
+                <div class="timeline-desc-elegant">Lễ Vu Quy</div>
+              </div>
+            </div>
+
+            <div class="timeline-item-elegant">
+              <div class="timeline-icon-left timeline-icon">
+                <i data-lucide="wine"></i>
+              </div>
+              <div class="timeline-line-middle"></div>
+              <div class="timeline-info-right">
+                <div class="timeline-time-elegant">11:30</div>
+                <div class="timeline-desc-elegant">Tiệc Cưới</div>
+              </div>
+            </div>
+
+            <div class="timeline-item-elegant">
+              <div class="timeline-icon-left timeline-icon">
+                <i data-lucide="camera"></i>
+              </div>
+              <div class="timeline-line-middle"></div>
+              <div class="timeline-info-right">
+                <div class="timeline-time-elegant">14:00</div>
+                <div class="timeline-desc-elegant">Chụp Ảnh Lưu Niệm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Info Box -->
+        <div id="dress-code-section" data-section="dress-code">
+          <div class="section-header reveal">
+            <p class="dress-code-header">Dress Code</p>
+          </div>
+          <div class="info-box reveal" style="text-align: center">
+            <p style="font-size: 1rem; color: #8b7355; font-weight: 400">
+              Trang phục phù hợp sẽ giúp những bức hình kỷ niệm thêm trọn vẹn
+            </p>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #faf7f2;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                "
+              ></div>
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #e8ded0;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                  margin-left: -15px;
+                "
+              ></div>
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #b85c6c;
+                  box-shadow: 0 4px 12px rgba(184, 92, 108, 0.3);
+                  margin-left: -15px;
+                "
+              ></div>
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #ffffff;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                  margin-left: -15px;
+                "
+              ></div>
+              <div
+                style="
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  background: #d4879b;
+                  box-shadow: 0 4px 12px rgba(212, 135, 155, 0.3);
+                  margin-left: -15px;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decorative Divider -->
+    <div class="decorative-divider" style="background: #f5f0e8">
+      <div class="decorative-divider-icon decorative-icon">
+        <i data-lucide="flower-2"></i>
+      </div>
+    </div>
+
+    <!-- Transition Quote -->
+    <div class="transition-quote" style="background: #f5f0e8">
+      <div class="transition-quote-text">
+        Những khoảnh khắc đẹp nhất của chúng tôi được lưu giữ mãi mãi...
+      </div>
+    </div>
+
+    <!-- ========================================
+         GALLERY - 3D CAROUSEL - MODERN ROMANTIC STYLE
+    ========================================= -->
+    <section id="gallery" class="py-10 w-full overflow-hidden">
+      <!-- Section Intro -->
+      <!-- <div class="section-intro">Kỷ Niệm</div> -->
+
+      <!-- Floating Rose Petals - Subtle -->
+      <div class="floating-petals">
+        <div class="petal petal-icon">
+          <i data-lucide="flower-2"></i>
+        </div>
+        <div class="petal petal-icon">
+          <i data-lucide="flower-2"></i>
+        </div>
+        <div class="petal petal-icon">
+          <i data-lucide="flower-2"></i>
+        </div>
+        <div class="petal petal-icon">
+          <i data-lucide="flower-2"></i>
+        </div>
+        <div class="petal petal-icon">
+          <i data-lucide="flower-2"></i>
+        </div>
+      </div>
+
+      <!-- Soft Bokeh Lights -->
+      <div class="bokeh-lights">
+        <div class="bokeh-light"></div>
+        <div class="bokeh-light"></div>
+        <div class="bokeh-light"></div>
+        <div class="bokeh-light"></div>
+        <div class="bokeh-light"></div>
+      </div>
+
+      <!-- <div class="text-center mb-8 px-4">
+            <h2 class="font-serif text-5xl mb-4 reveal" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Khoảnh Khắc Của Chúng Tôi</h2>
+        </div> -->
+
+      <div class="gallery-3d-container">
+        <button
+          class="gallery-nav-btn gallery-nav-prev"
+          onclick="rotateGallery(-1)"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+
+        <div class="gallery-3d-wrapper">
+          <div class="gallery-3d-track" id="gallery3DCarousel">
+            <!-- Images will be added by JavaScript -->
+          </div>
+        </div>
+
+        <button
+          class="gallery-nav-btn gallery-nav-next"
+          onclick="rotateGallery(1)"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="gallery-counter">
+        <span id="galleryCurrentSlide">1</span> /
+        <span id="galleryTotalSlides">35</span>
+      </div>
+
+      <div class="gallery-thumbnails" id="galleryThumbnails">
+        <!-- Thumbnails will be added by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Decorative Divider -->
+    <div class="decorative-divider" style="background: #f5f0e8">
+      <div class="decorative-divider-icon decorative-icon">
+        <i data-lucide="sparkles"></i>
+      </div>
+    </div>
+
+    <!-- Transition Quote -->
+    <div class="transition-quote" style="background: #f5f0e8">
+      <div class="transition-quote-text">
+        Mỗi lời chúc, mỗi sự hiện diện đều là điều đáng quý mà chúng tôi luôn
+        trân trọng. Cảm ơn vì bạn đã là một phần trong ngày đặc biệt này.
+      </div>
+    </div>
+
+    <!-- ========================================
+         GUESTBOOK
+    ========================================= -->
+    <section id="guestbook" class="py-12 w-full" style="background: #f5f0e8">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center reveal mb-8">
+          <h2
+            class="font-serif text-4xl md:text-5xl mb-3"
+            style="color: #8b0000"
+          >
+            Sổ Lưu Bút
+          </h2>
+        </div>
+
+        <!-- Messages with Background Image -->
+        <div class="guestbook-minimalist-container reveal">
+          <div class="guestbook-messages-bg">
+            <div class="guestbook-messages-overlay">
+              <div class="guestbook-messages-scroll" id="guestbookMessages">
+                <!-- Messages from Firebase will be displayed here -->
+                <div
+                  class="text-center py-6"
+                  id="emptyMessage"
+                  style="
+                    color: #fff9e6;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                  "
+                >
+                  <p class="text-base md:text-lg">
+                    Chưa có lời chúc nào. Hãy là người đầu tiên gửi lời chúc!
+                    <i
+                      data-lucide="heart"
+                      class="icon icon-sm icon-primary"
+                      style="display: inline-block; vertical-align: middle"
+                    ></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Messenger-style Input at Bottom -->
+            <div class="guestbook-messenger-input">
+              <form id="guestbook-form" class="guestbook-messenger-form">
+                <div class="guestbook-input-row">
+                  <div class="guestbook-input-fields">
+                    <input
+                      type="text"
+                      id="guestName"
+                      required
+                      placeholder="Tên của bạn"
+                      class="guestbook-input"
+                    />
+                    <textarea
+                      id="guestMessage"
+                      name="guestMessage"
+                      rows="1"
+                      required
+                      placeholder="Viết lời chúc..."
+                      class="guestbook-input"
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="guestbook-submit-btn btn-icon">
+                    <i data-lucide="send"></i>
+                  </button>
+                </div>
+                <div
+                  id="guestbook-message"
+                  class="text-center text-sm font-medium"
+                ></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decorative Divider -->
+    <div class="decorative-divider" style="background: #f5f0e8">
+      <div class="decorative-divider-icon decorative-icon">
+        <i data-lucide="heart"></i>
+      </div>
+    </div>
+
+    <!-- Transition Quote -->
+    <div class="transition-quote" style="background: #f5f0e8">
+      <div class="transition-quote-text"></div>
+      Mỗi lời hồi đáp của bạn chính là một niềm vui lớn đối với chúng tôi. Hãy
+      nhấn xác nhận để cùng chung vui nhé!
+    </div>
+
+    <!-- ========================================
+         RSVP SECTION
+    ========================================= -->
+    <section id="rsvp" class="section">
+      <div class="container mx-auto max-w-2xl text-center reveal">
+        <h2 class="font-serif text-5xl mb-4">Xác Nhận Tham Dự</h2>
+        <form id="rsvp-form" class="flex flex-col gap-4 text-left">
+          <!-- Tên -->
+          <div>
+            <label for="name" class="block text-sm font-semibold mb-2"
+              >Họ và tên *</label
+            >
+            <input
+              type="text"
+              id="name"
+              placeholder="Nhập họ tên của bạn"
+              class="w-full p-3 rounded-md bg-white/20 placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
+              required
+            />
+          </div>
+
+          <!-- Khách của ai -->
+          <div>
+            <label class="block text-sm font-semibold mb-3"
+              >Bạn là khách mời của *</label
+            >
+            <div class="flex gap-6">
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="guest-side"
+                  value="groom"
+                  class="w-5 h-5 text-white bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                  required
+                />
+                <span class="ml-2 text-base">Nhà Trai</span>
+              </label>
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="guest-side"
+                  value="bride"
+                  class="w-5 h-5 text-white bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                />
+                <span class="ml-2 text-base">Nhà Gái</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Có tham dự không -->
+          <div>
+            <label class="block text-sm font-semibold mb-3"
+              >Bạn có thể tham dự không? *</label
+            >
+            <div class="flex gap-6">
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="attendance"
+                  id="attendance-yes"
+                  value="yes"
+                  class="w-5 h-5 text-white bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                  required
+                />
+                <span class="ml-2 text-base">
+                  Có, tôi sẽ tham dự
+                  <i
+                    data-lucide="check"
+                    class="icon icon-xs icon-primary"
+                    style="display: inline-block; vertical-align: middle"
+                  ></i>
+                </span>
+              </label>
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="attendance"
+                  id="attendance-no"
+                  value="no"
+                  class="w-5 h-5 bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                />
+                <span class="ml-2 text-base">Rất tiếc, tôi không thể</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Các trường chỉ hiện khi chọn "Có" -->
+          <div id="attendance-details" style="display: none" class="space-y-4">
+            <!-- Số điện thoại -->
+            <div>
+              <label for="phone" class="block text-sm font-semibold mb-2"
+                >Số điện thoại
+                <span id="phone-required" style="display: none">*</span></label
+              >
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Số điện thoại của bạn"
+                class="w-full p-3 rounded-md bg-white/20 placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-2"
+                >Email (để nhận xác nhận)</label
+              >
+              <input
+                type="email"
+                id="email"
+                placeholder="email@example.com"
+                class="w-full p-3 rounded-md bg-white/20 placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
+              />
+            </div>
+
+            <!-- Số người đi cùng -->
+            <div>
+              <label for="guest-count" class="block text-sm font-semibold mb-2"
+                >Số người tham dự (bao gồm bạn) *</label
+              >
+              <input
+                type="number"
+                id="guest-count"
+                min="1"
+                max="20"
+                value="1"
+                class="w-full p-3 rounded-md bg-white/20 placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white text-gray-900"
+              />
+            </div>
+
+            <!-- Phương thức di chuyển -->
+            <div>
+              <label class="block text-sm font-semibold mb-3"
+                >Phương thức di chuyển *</label
+              >
+              <div class="flex gap-6">
+                <label class="flex items-center cursor-pointer">
+                  <input
+                    type="radio"
+                    name="transport"
+                    id="transport-self"
+                    value="self"
+                    class="w-5 h-5 text-white bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                  />
+                  <span class="ml-2 text-base">Tự di chuyển</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input
+                    type="radio"
+                    name="transport"
+                    id="transport-group"
+                    value="group"
+                    class="w-5 h-5 text-white bg-white/20 border-white/30 focus:ring-2 focus:ring-white"
+                  />
+                  <span class="ml-2 text-base">Đi cùng đoàn</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Điểm đón (chỉ hiện khi chọn "Đi cùng đoàn") -->
+            <div id="pickup-location-container" style="display: none">
+              <label
+                for="pickup-location"
+                class="block text-sm font-semibold mb-2"
+                >Điểm đón *</label
+              >
+              <select
+                id="pickup-location"
+                class="w-full p-3 rounded-md bg-white/20 text-gray-900 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                <option value="" disabled selected>Chọn điểm đón</option>
+                <option value="cau-giay">Cầu Giấy</option>
+                <option value="ha-dong">Hà Đông</option>
+                <option value="thai-thinh">Thái Thịnh</option>
+                <option value="thanh-tri">Thanh Trì</option>
+              </select>
+            </div>
+
+            <!-- Ghi chú -->
+            <div>
+              <label for="note" class="block text-sm font-semibold mb-2"
+                >Ghi chú (nếu có)</label
+              >
+              <textarea
+                id="note"
+                placeholder="Yêu cầu đặc biệt, dị ứng thực phẩm, v.v..."
+                class="w-full p-3 rounded-md bg-white/20 placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white h-20 text-gray-900 resize-none"
+                style="font-size: 16px"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Message khi không tham dự -->
+          <div
+            id="decline-message"
+            style="display: none"
+            class="bg-white/10 p-4 rounded-md"
+          >
+            <p class="text-center">
+              Rất tiếc vì bạn không thể tham dự. Chúng tôi sẽ nhớ bạn!
+              <i
+                data-lucide="heart"
+                class="icon icon-sm icon-accent"
+                style="display: inline-block; vertical-align: middle"
+              ></i>
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-sage font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition duration-300 mt-2"
+          >
+            Gửi Xác Nhận
+          </button>
+        </form>
+        <div id="form-message" class="mt-6 text-lg"></div>
+      </div>
+
+      <!-- ========================================
+             GIFT REGISTRY - SPLIT IMAGE
+        ========================================= -->
+      <div class="mt-12 text-center reveal">
+        <h3 class="font-serif text-3xl mb-4">Gửi Lời Chúc</h3>
+        <p class="mb-2 text-lg italic">
+          Sự hiện diện của bạn là món quà ý nghĩa nhất!
+        </p>
+        <p class="mb-8 text-sm">
+          Nếu bạn muốn gửi một món quà nhỏ, hãy chọn cô dâu hoặc chú rể
+        </p>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="gift-photo-container">
+            <img
+              src="album/ACN00163.jpg"
+              alt="Cô dâu & Chú rể"
+              class="gift-couple-photo"
+            />
+
+            <!-- Bride Side (Left) -->
+            <div
+              class="split-overlay bride-side"
+              onclick="openGiftModal('bride')"
+            >
+              <div class="overlay-hint">
+                <span class="hint-arrow-icon">
+                  <i data-lucide="arrow-right"></i>
+                </span>
+                <span class="hint-icon">
+                  <i data-lucide="user-round"></i>
+                </span>
+                <span class="hint-text">Cô Dâu</span>
+              </div>
+            </div>
+
+            <!-- Groom Side (Right) -->
+            <div
+              class="split-overlay groom-side"
+              onclick="openGiftModal('groom')"
+            >
+              <div class="overlay-hint">
+                <span class="hint-text">Chú Rể</span>
+                <span class="hint-icon">
+                  <i data-lucide="user-round"></i>
+                </span>
+                <span class="hint-arrow-icon left">
+                  <i data-lucide="arrow-left"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-8 text-sm italic">
+          "Tình cảm của bạn là điều chúng tôi trân trọng nhất"
+          <i
+            data-lucide="sparkles"
+            class="icon icon-sm"
+            style="
+              display: inline-block;
+              vertical-align: middle;
+              color: rgba(245, 240, 232, 0.9);
+            "
+          ></i>
+        </p>
+      </div>
+
+      <!-- Bride Modal -->
+      <div
+        id="brideGiftModal"
+        class="gift-modal"
+        onclick="closeGiftModal('bride')"
+      >
+        <div class="gift-modal-content" onclick="event.stopPropagation()">
+          <div class="gift-close-btn" onclick="closeGiftModal('bride')">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="text-center">
+            <div class="gift-modal-icon">
+              <i data-lucide="user-round"></i>
+            </div>
+            <h3 class="font-serif text-xl mb-1 text-gray-800">Cô Dâu</h3>
+            <p class="text-gray-600 mb-2 text-xs italic">
+              Cảm ơn tình cảm của bạn
+            </p>
+
+            <!-- QR Code -->
+            <div class="bg-gray-100 rounded-lg p-3 mb-2 inline-block">
+              <img
+                src="assets/qr_codau.jpg"
+                alt="QR Code Cô Dâu - Nguyen Thi Lan Anh"
+                class="w-48 h-auto"
+              />
+            </div>
+
+            <!-- Bank Info -->
+            <div
+              class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-3 text-left space-y-1.5"
+            >
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Ngân hàng:</span>
+                <span class="font-semibold text-gray-800 text-sm">TPBank</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Số tài khoản:</span>
+                <span class="font-semibold text-gray-800 text-sm"
+                  >0329 4215 501</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Chủ tài khoản:</span>
+                <span class="font-semibold text-gray-800 text-sm"
+                  >NGUYEN THI LAN ANH</span
+                >
+              </div>
+            </div>
+
+            <p class="mt-2 text-xs italic text-gray-600">
+              "Tình cảm của bạn là điều chúng tôi trân trọng nhất"
+              <i
+                data-lucide="sparkles"
+                class="icon icon-xs icon-primary"
+                style="display: inline-block; vertical-align: middle"
+              ></i>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Groom Modal -->
+      <div
+        id="groomGiftModal"
+        class="gift-modal"
+        onclick="closeGiftModal('groom')"
+      >
+        <div class="gift-modal-content" onclick="event.stopPropagation()">
+          <div class="gift-close-btn" onclick="closeGiftModal('groom')">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </div>
+
+          <div class="text-center">
+            <div class="gift-modal-icon">
+              <i data-lucide="user-round"></i>
+            </div>
+            <h3 class="font-serif text-xl mb-1 text-gray-800">Chú Rể</h3>
+            <p class="text-gray-600 mb-2 text-xs italic">
+              Cảm ơn tình cảm của bạn
+            </p>
+
+            <!-- QR Code -->
+            <div class="bg-gray-100 rounded-lg p-3 mb-2 inline-block">
+              <img
+                src="assets/qr_chure.jpg"
+                alt="QR Code Chú Rể - Do Duc Long"
+                class="w-48 h-auto"
+              />
+            </div>
+
+            <!-- Bank Info -->
+            <div
+              class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-3 text-left space-y-1.5"
+            >
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Ngân hàng:</span>
+                <span class="font-semibold text-gray-800 text-sm">TPBank</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Số tài khoản:</span>
+                <span class="font-semibold text-gray-800 text-sm"
+                  >0215 8753 401</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600 text-xs">Chủ tài khoản:</span>
+                <span class="font-semibold text-gray-800 text-sm"
+                  >DO DUC LONG</span
+                >
+              </div>
+            </div>
+
+            <p class="mt-2 text-xs italic text-gray-600">
+              "Tình cảm của bạn là điều chúng tôi trân trọng nhất"
+              <i
+                data-lucide="sparkles"
+                class="icon icon-xs icon-primary"
+                style="display: inline-block; vertical-align: middle"
+              ></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         THANK YOU SECTION
+    ========================================= -->
+    <section id="thank-you" class="thank-you-section">
+      <div class="thank-you-overlay">
+        <div class="container mx-auto max-w-2xl text-center px-6 reveal">
+          <p class="thank-you-text">
+            Cảm ơn vì đã dành thời gian và tình cảm đến với ngày trọng đại của
+            chúng tôi. Sự hiện diện của bạn là món quà quý giá và là niềm vui
+            lớn lao nhất.
+          </p>
+          <p class="thank-you-signature">
+            Với tất cả tình yêu thương,<br />
+            <span class="thank-you-names">Thank You</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+    <footer class="text-center py-6" style="background-color: #e8ded0">
+      <p class="font-serif text-2xl mb-2" style="color: #8b0000">Long & LAnh</p>
+    </footer>
+
+    <!-- ========================================
+         JAVASCRIPT MODULES
+    ========================================= -->
+    <!-- Initialize Lucide Icons -->
+    <script>
+      // Initialize all Lucide icons when DOM is ready
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      });
+    </script>
+
+    <script src="js/navigation.js"></script>
+    <script type="module" src="js/personalization.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

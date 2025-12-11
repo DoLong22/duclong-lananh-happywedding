@@ -1,0 +1,218 @@
+/* ========================================
+   HERO SECTION - MODERN DESIGN
+   Clean, impactful, with strong CTA
+======================================== */
+
+.hero {
+  /* Background with subtle radial overlay - lighter center to show faces */
+  background-image: radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.45) 100%
+    ),
+    url('../album/ACN09216.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  /* Layout */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  color: var(--color-white);
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+/* Hero Content Container */
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+/* Hero Subtitle - Small text above title */
+.hero-subtitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-6);
+}
+
+/* Hero Title - Main heading */
+.hero-title {
+  font-size: var(--text-5xl); /* 49px desktop, 39px tablet, 32px mobile */
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-8);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero Date - Wedding date */
+.hero-date {
+  font-size: var(--text-2xl); /* 25px */
+  font-weight: var(--font-light);
+  color: var(--color-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: var(--space-3) var(--space-8);
+  display: inline-block;
+  margin-bottom: var(--space-10);
+}
+
+/* ========================================
+   SUBTLE CTA BUTTON
+   Elegant outline style that doesn't overshadow the photo
+======================================== */
+.hero-cta {
+  /* Size & Spacing - More modest */
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  font-family: var(--font-body);
+  letter-spacing: var(--tracking-wider);
+
+  /* Colors - Subtle ghost/outline style */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-white);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+
+  /* Shape */
+  border-radius: 50px;
+
+  /* Shadow - Subtle */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  /* Interaction */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* Ensure visibility but not overwhelming */
+  position: relative;
+  z-index: 10;
+}
+
+.hero-cta:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   COUNTDOWN SECTION
+======================================== */
+.hero-countdown {
+  margin-top: var(--space-16);
+  width: 100%;
+  max-width: 700px;
+}
+
+.hero-countdown h3 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-6);
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-10);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  opacity: 0.8;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-date {
+    font-size: var(--text-xl);
+    padding: var(--space-2) var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  .hero-cta {
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--text-base);
+  }
+
+  .hero-countdown {
+    margin-top: var(--space-12);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .hero-subtitle {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-date {
+    font-size: var(--text-lg);
+    padding: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-cta {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .hero-countdown {
+    margin-top: var(--space-10);
+  }
+
+  .hero-scroll-indicator {
+    bottom: var(--space-6);
+  }
+}

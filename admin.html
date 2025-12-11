@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Mời - Wedding Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #F5F0E8 0%, #E8DED0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .login-screen h1 {
+            color: #A8926D;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-screen input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E8DED0;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .login-screen button {
+            width: 100%;
+            padding: 15px;
+            background: #A8926D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .login-screen button:hover {
+            background: #8B7A63;
+        }
+
+        .error-msg {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #A8926D;
+            font-size: 2rem;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #b71c1c;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .number {
+            color: #A8926D;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #A8926D;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            padding: 12px 15px;
+            border: 2px solid #E8DED0;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #A8926D;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #A8926D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #8B7A63;
+        }
+
+        .btn-secondary {
+            background: #5F7A71;
+        }
+
+        .btn-secondary:hover {
+            background: #4A6259;
+        }
+
+        .btn-danger {
+            background: #d32f2f;
+        }
+
+        .btn-danger:hover {
+            background: #b71c1c;
+        }
+
+        .bulk-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 2px solid #E8DED0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+        .bulk-input:focus {
+            outline: none;
+            border-color: #A8926D;
+        }
+
+        .guest-list {
+            margin-top: 20px;
+        }
+
+        .guest-item {
+            background: #F9F7F4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #A8926D;
+        }
+
+        .guest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .guest-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #5F5244;
+        }
+
+        .guest-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .guest-actions button {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        .guest-url {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #666;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-btn {
+            padding: 5px 15px;
+            background: #A8926D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.85rem;
+        }
+
+        .copy-btn:hover {
+            background: #8B7A63;
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .bulk-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* RSVP Table Styles */
+        .rsvp-table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .rsvp-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .rsvp-table thead {
+            background: #A8926D;
+            color: white;
+        }
+
+        .rsvp-table th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .rsvp-table td {
+            padding: 12px;
+            border-bottom: 1px solid #E8DED0;
+            font-size: 0.9rem;
+            vertical-align: top;
+        }
+
+        .rsvp-table tbody tr:hover {
+            background: #F9F7F4;
+        }
+
+        .rsvp-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rsvp-status-badge {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .rsvp-status-badge.attending {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .rsvp-status-badge.not-attending {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .rsvp-side-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .rsvp-side-badge.groom {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .rsvp-side-badge.bride {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .rsvp-transport-badge {
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .rsvp-transport-badge.group {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .rsvp-transport-badge.self {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .rsvp-pickup-badge {
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .rsvp-note-cell {
+            max-width: 200px;
+            white-space: normal;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .rsvp-timestamp-cell {
+            font-size: 0.8rem;
+            color: #999;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .guest-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .guest-url {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bulk-actions {
+                flex-direction: column;
+            }
+
+            .rsvp-table {
+                font-size: 0.8rem;
+            }
+
+            .rsvp-table th,
+            .rsvp-table td {
+                padding: 8px 6px;
+            }
+
+            .rsvp-note-cell {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <h1>🔐 Đăng Nhập Admin</h1>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu" />
+        <button onclick="login()">Đăng Nhập</button>
+        <div class="error-msg" id="errorMsg"></div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="container">
+            <div class="header">
+                <h1>💒 Quản Lý Khách Mời Wedding</h1>
+                <button class="logout-btn" onclick="logout()">Đăng Xuất</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Tổng Số Khách</h3>
+                    <div class="number" id="totalGuests">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Base URL</h3>
+                    <div style="font-size: 0.9rem; color: #666; margin-top: 10px;" id="baseUrl">-</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>➕ Thêm Khách Mới</h2>
+                <div class="input-group">
+                    <input type="text" id="guestNameInput" placeholder="Nhập tên khách (VD: Nguyễn Văn A)" />
+                    <button class="btn" onclick="addGuest()">Thêm</button>
+                </div>
+                <div style="margin: 15px 0; padding: 15px; background: #F9F7F4; border-radius: 8px;">
+                    <label style="display: flex; align-items: center; cursor: pointer; font-size: 15px;">
+                        <input type="checkbox" id="brideVenueCheckbox" style="width: 20px; height: 20px; margin-right: 10px; cursor: pointer;" />
+                        <span style="color: #5F5244; font-weight: 600;">🏠 Khách mời nhà gái ăn cỗ trước (18:00 - 27/12/2025)</span>
+                    </label>
+                    <p style="margin: 8px 0 0 30px; color: #999; font-size: 0.85rem;">Địa chỉ: Tư gia nhà gái, Xã Bạch Đằng, Hưng Yên</p>
+                </div>
+                <p style="color: #666; font-size: 0.9rem;">Hoặc thêm nhiều khách cùng lúc (mỗi dòng một tên):</p>
+                <textarea class="bulk-input" id="bulkInput" placeholder="Nguyễn Văn A&#10;Trần Thị B&#10;Lê Văn C"></textarea>
+                <div style="margin: 15px 0; padding: 15px; background: #F9F7F4; border-radius: 8px;">
+                    <label style="display: flex; align-items: center; cursor: pointer; font-size: 15px;">
+                        <input type="checkbox" id="bulkBrideVenueCheckbox" style="width: 20px; height: 20px; margin-right: 10px; cursor: pointer;" />
+                        <span style="color: #5F5244; font-weight: 600;">🏠 Khách mời nhà gái ăn cỗ trước (18:00 - 27/12/2025)</span>
+                    </label>
+                </div>
+                <button class="btn btn-secondary" onclick="addBulkGuests()">Thêm Nhiều Khách</button>
+            </div>
+
+            <div class="section">
+                <h2>📋 Danh Sách Khách Mời (<span id="guestCount">0</span> khách)</h2>
+                <div class="bulk-actions">
+                    <button class="btn btn-secondary" onclick="copyAllUrls()">📋 Copy Tất Cả URLs</button>
+                    <button class="btn btn-secondary" onclick="downloadUrls()">💾 Download File</button>
+                    <button class="btn btn-danger" onclick="deleteAllGuests()">🗑️ Xóa Tất Cả</button>
+                </div>
+                <div class="guest-list" id="guestList">
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <p>Chưa có khách mời nào. Hãy thêm khách mới!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP Responses Section -->
+            <div class="section">
+                <h2>💌 Phản Hồi RSVP</h2>
+
+                <!-- RSVP Statistics -->
+                <div class="stats" style="margin-bottom: 25px;">
+                    <div class="stat-card">
+                        <h3>Tổng Phản Hồi</h3>
+                        <div class="number" id="totalRsvps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>✅ Tham Dự</h3>
+                        <div class="number" style="color: #4caf50;" id="attendingCount">0</div>
+                        <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                            <span id="attendingGuests">0</span> khách
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>❌ Không Tham Dự</h3>
+                        <div class="number" style="color: #f44336;" id="notAttendingCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>🚗 Đón Xe</h3>
+                        <div class="number" style="color: #2196f3;" id="groupTransportCount">0</div>
+                    </div>
+                </div>
+
+                <!-- Filter and Search -->
+                <div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <input type="text" id="rsvpSearch" placeholder="🔍 Tìm kiếm theo tên..."
+                           style="flex: 1; min-width: 200px; padding: 10px 15px; border: 2px solid #E8DED0; border-radius: 8px; font-size: 15px;">
+                    <select id="attendanceFilter" onchange="filterRsvps()"
+                            style="padding: 10px 15px; border: 2px solid #E8DED0; border-radius: 8px; font-size: 15px; background: white; cursor: pointer;">
+                        <option value="all">Tất cả</option>
+                        <option value="yes">Tham dự</option>
+                        <option value="no">Không tham dự</option>
+                    </select>
+                    <select id="sideFilter" onchange="filterRsvps()"
+                            style="padding: 10px 15px; border: 2px solid #E8DED0; border-radius: 8px; font-size: 15px; background: white; cursor: pointer;">
+                        <option value="all">Cả hai bên</option>
+                        <option value="groom">Nhà trai</option>
+                        <option value="bride">Nhà gái</option>
+                    </select>
+                    <select id="transportFilter" onchange="filterRsvps()"
+                            style="padding: 10px 15px; border: 2px solid #E8DED0; border-radius: 8px; font-size: 15px; background: white; cursor: pointer;">
+                        <option value="all">Phương tiện</option>
+                        <option value="group">Đón xe</option>
+                        <option value="self">Tự đi</option>
+                    </select>
+                </div>
+
+                <!-- Export Button -->
+                <div style="margin-bottom: 20px;">
+                    <button class="btn btn-secondary" onclick="exportRsvpData()">📊 Xuất Excel</button>
+                </div>
+
+                <!-- RSVP List -->
+                <div id="rsvpList">
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <p>Chưa có phản hồi RSVP nào.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { firebaseConfig } from './js/config.js';
+        import { URLParamsEncoder } from './js/url-params.js';
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getDatabase, ref, push, set, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js';
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const guestsRef = ref(db, 'guests');
+        const rsvpRef = ref(db, 'rsvp');
+
+        // Store RSVP data for filtering
+        let allRsvpData = [];
+
+        // Password
+        const ADMIN_PASSWORD = 'longlanh2025@';
+
+        // Global functions
+        window.login = function() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminAuth', 'true');
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadGuests();
+                loadRsvpData();
+            } else {
+                errorMsg.textContent = 'Mật khẩu không đúng!';
+            }
+        };
+
+        window.logout = function() {
+            sessionStorage.removeItem('adminAuth');
+            location.reload();
+        };
+
+        window.addGuest = async function() {
+            const nameInput = document.getElementById('guestNameInput');
+            const name = nameInput.value.trim();
+            const isBrideVenue = document.getElementById('brideVenueCheckbox').checked;
+
+            if (!name) {
+                alert('Vui lòng nhập tên khách!');
+                return;
+            }
+
+            try {
+                const newGuestRef = push(guestsRef);
+                const venue = isBrideVenue ? 'bride' : 'groom';
+                const guestUrl = generateUrl(name, venue);
+
+                await set(newGuestRef, {
+                    name: name,
+                    url: guestUrl,
+                    venue: venue,
+                    createdAt: Date.now()
+                });
+
+                nameInput.value = '';
+                document.getElementById('brideVenueCheckbox').checked = false;
+                alert('✅ Đã thêm khách: ' + name + (isBrideVenue ? ' (Nhà gái)' : ''));
+            } catch (error) {
+                console.error('Error adding guest:', error);
+                alert('❌ Lỗi khi thêm khách!');
+            }
+        };
+
+        window.addBulkGuests = async function() {
+            const bulkInput = document.getElementById('bulkInput');
+            const names = bulkInput.value.split('\n').map(n => n.trim()).filter(n => n);
+            const isBrideVenue = document.getElementById('bulkBrideVenueCheckbox').checked;
+
+            if (names.length === 0) {
+                alert('Vui lòng nhập danh sách tên!');
+                return;
+            }
+
+            try {
+                const venue = isBrideVenue ? 'bride' : 'groom';
+
+                for (const name of names) {
+                    const newGuestRef = push(guestsRef);
+                    const guestUrl = generateUrl(name, venue);
+
+                    await set(newGuestRef, {
+                        name: name,
+                        url: guestUrl,
+                        venue: venue,
+                        createdAt: Date.now()
+                    });
+                }
+
+                bulkInput.value = '';
+                document.getElementById('bulkBrideVenueCheckbox').checked = false;
+                alert(`✅ Đã thêm ${names.length} khách thành công!` + (isBrideVenue ? ' (Nhà gái)' : ''));
+            } catch (error) {
+                console.error('Error adding bulk guests:', error);
+                alert('❌ Lỗi khi thêm khách!');
+            }
+        };
+
+        window.deleteGuest = async function(guestId, guestName) {
+            if (confirm(`Xóa khách: ${guestName}?`)) {
+                try {
+                    await remove(ref(db, 'guests/' + guestId));
+                    alert('✅ Đã xóa khách!');
+                } catch (error) {
+                    console.error('Error deleting guest:', error);
+                    alert('❌ Lỗi khi xóa khách!');
+                }
+            }
+        };
+
+        window.deleteAllGuests = async function() {
+            if (confirm('⚠️ XÓA TẤT CẢ khách mời? Không thể hoàn tác!')) {
+                if (confirm('Bạn chắc chắn chứ? Nhấn OK để xác nhận xóa hết!')) {
+                    try {
+                        await remove(guestsRef);
+                        alert('✅ Đã xóa tất cả khách!');
+                    } catch (error) {
+                        console.error('Error deleting all guests:', error);
+                        alert('❌ Lỗi khi xóa!');
+                    }
+                }
+            }
+        };
+
+        window.copyUrl = function(url, btnElement) {
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = btnElement.textContent;
+                btnElement.textContent = '✓ Đã Copy';
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.textContent = originalText;
+                    btnElement.classList.remove('copied');
+                }, 2000);
+            });
+        };
+
+        window.copyAllUrls = function() {
+            const urlElements = document.querySelectorAll('.guest-url span');
+            const urls = Array.from(urlElements).map(el => el.textContent).join('\n');
+
+            if (urls) {
+                navigator.clipboard.writeText(urls).then(() => {
+                    alert('✅ Đã copy tất cả URLs!');
+                });
+            }
+        };
+
+        window.downloadUrls = function() {
+            const urlElements = document.querySelectorAll('.guest-url');
+            let content = 'DANH SÁCH LINK THIỆP CƯỚI\n';
+            content += '=' .repeat(50) + '\n\n';
+
+            urlElements.forEach((el, index) => {
+                const name = el.parentElement.querySelector('.guest-name').textContent;
+                const url = el.querySelector('span').textContent;
+                content += `${index + 1}. ${name}\n${url}\n\n`;
+            });
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'danh-sach-khach-moi.txt';
+            link.click();
+        };
+
+        function generateUrl(name, venue = 'groom') {
+            const baseUrl = "https://duclong-lananh-happywedding.vercel.app" + window.location.pathname.replace('admin.html', 'index.html');
+
+            // Use encrypted URL parameters
+            const params = {
+                guest: name,
+                venue: venue
+            };
+
+            return URLParamsEncoder.generateUrl(baseUrl, params);
+        }
+
+        function loadGuests() {
+            document.getElementById('baseUrl').textContent = window.location.origin;
+
+            onValue(guestsRef, (snapshot) => {
+                const guests = snapshot.val();
+                const guestListDiv = document.getElementById('guestList');
+
+                if (!guests) {
+                    guestListDiv.innerHTML = `
+                        <div class="empty-state">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <p>Chưa có khách mời nào. Hãy thêm khách mới!</p>
+                        </div>
+                    `;
+                    document.getElementById('totalGuests').textContent = '0';
+                    document.getElementById('guestCount').textContent = '0';
+                    return;
+                }
+
+                const guestArray = Object.entries(guests).map(([id, data]) => ({ id, ...data }));
+                guestArray.sort((a, b) => b.createdAt - a.createdAt);
+
+                document.getElementById('totalGuests').textContent = guestArray.length;
+                document.getElementById('guestCount').textContent = guestArray.length;
+
+                guestListDiv.innerHTML = guestArray.map(guest => `
+                    <div class="guest-item">
+                        <div class="guest-header">
+                            <div class="guest-name">${guest.name}</div>
+                            <div class="guest-actions">
+                                <button class="btn btn-danger" onclick="deleteGuest('${guest.id}', '${guest.name}')">Xóa</button>
+                            </div>
+                        </div>
+                        <div class="guest-url">
+                            <span>${guest.url}</span>
+                            <button class="copy-btn" onclick="copyUrl('${guest.url}', this)">Copy</button>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        // Load RSVP data
+        function loadRsvpData() {
+            onValue(rsvpRef, (snapshot) => {
+                const rsvps = snapshot.val();
+
+                if (!rsvps) {
+                    allRsvpData = [];
+                    updateRsvpStats();
+                    displayRsvps([]);
+                    return;
+                }
+
+                allRsvpData = Object.entries(rsvps).map(([id, data]) => ({ id, ...data }));
+                allRsvpData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                updateRsvpStats();
+                filterRsvps();
+            });
+        }
+
+        // Update RSVP statistics
+        function updateRsvpStats() {
+            const totalRsvps = allRsvpData.length;
+            const attending = allRsvpData.filter(r => r.attendance === 'yes');
+            const notAttending = allRsvpData.filter(r => r.attendance === 'no');
+            const groupTransport = allRsvpData.filter(r => r.transport === 'group');
+
+            const totalGuests = attending.reduce((sum, r) => sum + (parseInt(r.guestCount) || 0), 0);
+
+            document.getElementById('totalRsvps').textContent = totalRsvps;
+            document.getElementById('attendingCount').textContent = attending.length;
+            document.getElementById('attendingGuests').textContent = totalGuests;
+            document.getElementById('notAttendingCount').textContent = notAttending.length;
+            document.getElementById('groupTransportCount').textContent = groupTransport.length;
+        }
+
+        // Filter RSVPs
+        window.filterRsvps = function() {
+            const searchTerm = document.getElementById('rsvpSearch').value.toLowerCase();
+            const attendanceFilter = document.getElementById('attendanceFilter').value;
+            const sideFilter = document.getElementById('sideFilter').value;
+            const transportFilter = document.getElementById('transportFilter').value;
+
+            let filtered = allRsvpData;
+
+            // Search by name
+            if (searchTerm) {
+                filtered = filtered.filter(r => r.name.toLowerCase().includes(searchTerm));
+            }
+
+            // Filter by attendance
+            if (attendanceFilter !== 'all') {
+                filtered = filtered.filter(r => r.attendance === attendanceFilter);
+            }
+
+            // Filter by side
+            if (sideFilter !== 'all') {
+                filtered = filtered.filter(r => r.guestSide === sideFilter);
+            }
+
+            // Filter by transport
+            if (transportFilter !== 'all') {
+                filtered = filtered.filter(r => r.transport === transportFilter);
+            }
+
+            displayRsvps(filtered);
+        };
+
+        // Display RSVPs
+        function displayRsvps(rsvps) {
+            const rsvpListDiv = document.getElementById('rsvpList');
+
+            if (rsvps.length === 0) {
+                rsvpListDiv.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <p>Không tìm thấy phản hồi nào.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const pickupLabels = {
+                'cau-giay': 'Cầu Giấy',
+                'ha-dong': 'Hà Đông',
+                'thai-thinh': 'Thái Thịnh',
+                'thanh-tri': 'Thanh Trì'
+            };
+
+            const tableRows = rsvps.map((rsvp, index) => {
+                const isAttending = rsvp.attendance === 'yes';
+                const sideClass = rsvp.guestSide === 'groom' ? 'groom' : 'bride';
+                const sideLabel = rsvp.guestSide === 'groom' ? 'Nhà trai' : 'Nhà gái';
+
+                // Transport badge
+                let transportHTML = '-';
+                if (isAttending) {
+                    if (rsvp.transport === 'group') {
+                        transportHTML = '<span class="rsvp-transport-badge group">🚗 Đón xe</span>';
+                    } else if (rsvp.transport === 'self') {
+                        transportHTML = '<span class="rsvp-transport-badge self">🚶 Tự đi</span>';
+                    }
+                }
+
+                // Pickup location badge
+                let pickupHTML = '-';
+                if (isAttending && rsvp.transport === 'group' && rsvp.pickupLocation) {
+                    const pickupLabel = pickupLabels[rsvp.pickupLocation] || rsvp.pickupLocation;
+                    pickupHTML = `<span class="rsvp-pickup-badge">📍 ${pickupLabel}</span>`;
+                }
+
+                const date = new Date(rsvp.timestamp);
+                const formattedDate = date.toLocaleString('vi-VN', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                return `
+                    <tr>
+                        <td style="text-align: center;">${index + 1}</td>
+                        <td><strong>${rsvp.name}</strong></td>
+                        <td>
+                            <span class="rsvp-status-badge ${isAttending ? 'attending' : 'not-attending'}">
+                                ${isAttending ? '✅ Tham dự' : '❌ Không tham dự'}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="rsvp-side-badge ${sideClass}">
+                                ${sideLabel}
+                            </span>
+                        </td>
+                        <td style="text-align: center;">${isAttending ? rsvp.guestCount : '-'}</td>
+                        <td>${isAttending && rsvp.phone ? rsvp.phone : '-'}</td>
+                        <td>${isAttending && rsvp.email ? rsvp.email : '-'}</td>
+                        <td>${transportHTML}</td>
+                        <td>${pickupHTML}</td>
+                        <td class="rsvp-note-cell">${isAttending && rsvp.note ? rsvp.note : '-'}</td>
+                        <td class="rsvp-timestamp-cell">${formattedDate}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            rsvpListDiv.innerHTML = `
+                <div class="rsvp-table-container">
+                    <table class="rsvp-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Trạng thái</th>
+                                <th>Bên</th>
+                                <th>Số người</th>
+                                <th>Điện thoại</th>
+                                <th>Email</th>
+                                <th>Phương tiện</th>
+                                <th>Địa điểm đón</th>
+                                <th>Ghi chú</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tableRows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // Export RSVP data to CSV
+        window.exportRsvpData = function() {
+            if (allRsvpData.length === 0) {
+                alert('Không có dữ liệu để xuất!');
+                return;
+            }
+
+            const pickupLabels = {
+                'cau-giay': 'Cầu Giấy',
+                'ha-dong': 'Hà Đông',
+                'thai-thinh': 'Thái Thịnh',
+                'thanh-tri': 'Thanh Trì'
+            };
+
+            // Create CSV header
+            let csv = '\ufeff'; // UTF-8 BOM
+            csv += 'STT,Tên,Bên,Tham dự,Số người,Điện thoại,Email,Phương tiện,Địa điểm đón,Ghi chú,Thời gian\n';
+
+            // Add data rows
+            allRsvpData.forEach((rsvp, index) => {
+                const sideLabel = rsvp.guestSide === 'groom' ? 'Nhà trai' : 'Nhà gái';
+                const attendanceLabel = rsvp.attendance === 'yes' ? 'Có' : 'Không';
+                const transportLabel = rsvp.transport === 'group' ? 'Đón xe' : rsvp.transport === 'self' ? 'Tự đi' : '-';
+                const pickupLabel = rsvp.pickupLocation ? pickupLabels[rsvp.pickupLocation] || rsvp.pickupLocation : '-';
+                const date = new Date(rsvp.timestamp).toLocaleString('vi-VN');
+
+                csv += `${index + 1},"${rsvp.name}","${sideLabel}","${attendanceLabel}",`;
+                csv += `"${rsvp.guestCount || '-'}","${rsvp.phone || '-'}","${rsvp.email || '-'}",`;
+                csv += `"${transportLabel}","${pickupLabel}","${(rsvp.note || '-').replace(/"/g, '""')}","${date}"\n`;
+            });
+
+            // Download file
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `rsvp-responses-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        };
+
+        // Check auth on load
+        if (sessionStorage.getItem('adminAuth') === 'true') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            loadGuests();
+            loadRsvpData();
+        }
+
+        // Enter key to login
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                window.login();
+            }
+        });
+
+        // Enter key to add guest
+        document.getElementById('guestNameInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                window.addGuest();
+            }
+        });
+
+        // Search RSVP on input
+        document.getElementById('rsvpSearch').addEventListener('input', () => {
+            window.filterRsvps();
+        });
+    </script>
+</body>
+</html>

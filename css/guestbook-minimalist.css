@@ -1,0 +1,288 @@
+/* ========================================
+   GUESTBOOK MINIMALIST STYLE
+   With background image and scrollable messages
+========================================= */
+
+.guestbook-minimalist-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Messages Section with Background Image */
+.guestbook-messages-bg {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: none;
+    background-image: url('../album/ACN09685.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.guestbook-messages-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(184, 139, 139, 0.1) 100%
+    );
+    backdrop-filter: blur(0px);
+    padding: 20px 20px 0 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(650px - 60px);
+    overflow: hidden;
+}
+
+.guestbook-minimalist-title {
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.guestbook-messages-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 12px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Custom Scrollbar */
+.guestbook-messages-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.guestbook-messages-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.guestbook-messages-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+}
+
+.guestbook-messages-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Message Card - iOS Style */
+.guestbook-message-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: none;
+    padding: 12px 16px;
+    border-radius: 18px;
+    margin-bottom: 8px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    width: 90%;
+    max-width: 600px;
+}
+
+.guestbook-message-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.guestbook-message-name {
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    text-shadow: none;
+}
+
+.guestbook-message-text {
+    color: #1C1C1E;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    text-shadow: none;
+}
+
+.guestbook-message-time {
+    font-size: 0.75rem;
+    color: #8E8E93;
+    text-align: right;
+    text-shadow: none;
+}
+
+/* Messenger-style Input Area */
+.guestbook-messenger-input {
+    background: rgba(255, 255, 255, 0.96);
+    padding: 12px 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: none;
+}
+
+.guestbook-messenger-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guestbook-input-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.guestbook-input-fields {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guestbook-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    background: #FFFFFF;
+}
+
+.guestbook-input:focus {
+    outline: none;
+    border-color: rgba(184, 139, 139, 0.3);
+    box-shadow: none;
+}
+
+.guestbook-input::placeholder {
+    color: #999;
+}
+
+textarea.guestbook-input {
+    resize: none;
+    min-height: 40px;
+    max-height: 80px;
+}
+
+.guestbook-submit-btn {
+    background: var(--color-accent-dark);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guestbook-submit-btn:hover {
+    background: #A52A2A;
+    transform: scale(1.05);
+}
+
+.guestbook-submit-btn:active {
+    transform: scale(0.95);
+}
+
+/* Hide old separate form */
+.guestbook-minimalist-form {
+    display: none;
+}
+
+/* Success/Error Messages */
+#guestbook-message {
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+#guestbook-message:empty {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .guestbook-messages-bg {
+        min-height: 220px;
+    }
+
+    .guestbook-messages-overlay {
+        padding: 15px 15px 0 15px;
+        max-height: calc(520px - 50px);
+    }
+
+    .guestbook-minimalist-title {
+        font-size: 1.1rem;
+    }
+
+    .guestbook-message-card {
+        padding: 10px 14px;
+        width: 95%;
+    }
+
+    .guestbook-messenger-input {
+        padding: 10px 12px;
+    }
+
+    .guestbook-submit-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .guestbook-messages-bg {
+        min-height: 200px;
+        border-radius: 15px;
+    }
+
+    .guestbook-messages-overlay {
+        padding: 12px 12px 0 12px;
+        max-height: calc(500px - 45px);
+    }
+
+    .guestbook-minimalist-title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .guestbook-message-card {
+        width: 98%;
+        padding: 10px 12px;
+    }
+
+    .guestbook-input {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .guestbook-messenger-input {
+        padding: 10px;
+    }
+
+    .guestbook-submit-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .guestbook-input-row {
+        gap: 6px;
+    }
+}

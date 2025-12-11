@@ -1,0 +1,333 @@
+/* ========================================
+   MODERN ROMANTIC GALLERY STYLE
+   Clean, minimal but romantic & elegant
+========================================= */
+
+:root {
+    /* Soft Red Tones - Modern */
+    --burgundy: #B85C6C;
+    --deep-red: #9B4A5A;
+    --soft-red: #D4879B;
+    --light-red: #E8C0CB;
+
+    /* Beige Tones - Warmer */
+    --cream: #FAF7F2;
+    --beige: #F5EFE7;
+    --tan: #E8DED0;
+    --taupe: #D4C5B0;
+
+    /* Modern Accents */
+    --accent-light: #FFFFFF;
+    --accent-cream: #FFFBF7;
+}
+
+/* Gallery Section Background - Unified */
+#gallery {
+    background: var(--color-secondary);
+    position: relative;
+    padding: var(--space-20) var(--section-padding-x);  /* 80px vertical */
+    overflow: hidden;
+}
+
+/* Remove all vintage decorations */
+#gallery::before,
+#gallery::after {
+    display: none;
+}
+
+/* Hide vintage elements */
+.string-lights,
+.ornamental-corner,
+.ornamental-bottom {
+    display: none;
+}
+
+/* Floating Rose Petals - Subtle & Modern */
+.floating-petals {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: floatPetal 15s infinite ease-in-out;
+}
+
+@keyframes floatPetal {
+    0% {
+        transform: translateY(-50px) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.08; }
+    100% {
+        transform: translateY(600px) translateX(80px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.petal:nth-child(1) { left: 10%; animation-delay: 0s; color: var(--light-red); }
+.petal:nth-child(2) { left: 30%; animation-delay: 4s; color: var(--soft-red); }
+.petal:nth-child(3) { left: 50%; animation-delay: 8s; color: var(--light-red); }
+.petal:nth-child(4) { left: 70%; animation-delay: 2s; color: var(--burgundy); }
+.petal:nth-child(5) { left: 90%; animation-delay: 6s; color: var(--soft-red); }
+
+/* Soft Bokeh Lights Background */
+.bokeh-lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bokeh-light {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(216, 135, 155, 0.12), transparent);
+    animation: bokehFloat 20s infinite ease-in-out;
+}
+
+@keyframes bokehFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.15;
+    }
+    25% {
+        transform: translate(40px, -40px) scale(1.1);
+        opacity: 0.25;
+    }
+    50% {
+        transform: translate(-30px, -80px) scale(0.9);
+        opacity: 0.12;
+    }
+    75% {
+        transform: translate(30px, -120px) scale(1.05);
+        opacity: 0.18;
+    }
+}
+
+.bokeh-light:nth-child(1) {
+    width: 120px; height: 120px;
+    top: 15%; left: 10%;
+    animation-delay: 0s;
+}
+.bokeh-light:nth-child(2) {
+    width: 100px; height: 100px;
+    top: 50%; right: 15%;
+    animation-delay: 5s;
+}
+.bokeh-light:nth-child(3) {
+    width: 140px; height: 140px;
+    bottom: 20%; left: 20%;
+    animation-delay: 10s;
+}
+.bokeh-light:nth-child(4) {
+    width: 80px; height: 80px;
+    top: 30%; right: 30%;
+    animation-delay: 3s;
+}
+.bokeh-light:nth-child(5) {
+    width: 110px; height: 110px;
+    bottom: 30%; right: 25%;
+    animation-delay: 7s;
+}
+
+/* Title Styling - Modern */
+#gallery h2 {
+    color: var(--burgundy) !important;
+    text-shadow: none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Modern Clean Frame for Images - No White Border */
+.gallery-3d-item {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-3d-item.active {
+    box-shadow: none;
+    transform-origin: center;
+}
+
+/* Remove film strip effects */
+.gallery-3d-item::before,
+.gallery-3d-item::after {
+    display: none !important;
+}
+
+/* Image styling - Clean & Modern */
+.gallery-3d-item img {
+    filter: brightness(1) contrast(1) !important;
+    border: none;
+    border-radius: 16px;
+    transition: transform 0.4s ease;
+}
+
+.gallery-3d-item.active img {
+    filter: brightness(1.02) contrast(1.03) !important;
+}
+
+/* Navigation Buttons - Modern Minimal */
+.gallery-nav-btn {
+    background: white !important;
+    border: 1px solid rgba(184, 92, 108, 0.2) !important;
+    width: 48px !important;
+    height: 48px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease !important;
+}
+
+.gallery-nav-btn:hover {
+    background: var(--burgundy) !important;
+    border-color: var(--burgundy) !important;
+    transform: translateY(-50%) scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(184, 92, 108, 0.25) !important;
+}
+
+.gallery-nav-btn:hover svg {
+    fill: white !important;
+}
+
+.gallery-nav-btn svg {
+    fill: var(--burgundy) !important;
+    transition: fill 0.3s ease;
+}
+
+/* Counter - Modern Typography */
+.gallery-counter {
+    color: var(--burgundy) !important;
+    font-size: 1.2rem !important;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* Thumbnails - Modern Clean */
+.gallery-thumbnail {
+    border: 2px solid rgba(184, 92, 108, 0.15) !important;
+    border-radius: 12px !important;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.gallery-thumbnail:hover {
+    border-color: var(--soft-red) !important;
+    opacity: 0.75;
+    box-shadow: 0 4px 12px rgba(184, 92, 108, 0.15);
+}
+
+.gallery-thumbnail.active {
+    border-color: var(--burgundy) !important;
+    opacity: 1;
+    box-shadow: 0 6px 16px rgba(184, 92, 108, 0.25);
+    transform: scale(1.12);
+}
+
+/* Remove vintage label */
+.vintage-photo-label {
+    display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .gallery-3d-item {
+        border-radius: 14px !important;
+    }
+
+    .gallery-3d-item img {
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    #gallery h2 {
+        font-size: 2rem !important;
+    }
+
+    .gallery-nav-btn {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .gallery-3d-item {
+        border-radius: 12px !important;
+    }
+
+    .gallery-3d-item img {
+        border-radius: 12px;
+    }
+
+    .gallery-counter {
+        font-size: 1.1rem !important;
+    }
+
+    .gallery-thumbnail {
+        border-radius: 10px !important;
+    }
+
+    .petal {
+        font-size: 1rem;
+    }
+
+    .bokeh-light {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    #gallery h2 {
+        font-size: 1.75rem !important;
+    }
+
+    .gallery-nav-btn {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .gallery-3d-item {
+        border-radius: 10px !important;
+    }
+
+    .gallery-3d-item img {
+        border-radius: 10px;
+    }
+
+    .gallery-counter {
+        font-size: 1rem !important;
+    }
+
+    .gallery-thumbnail {
+        border-radius: 8px !important;
+    }
+
+    .petal {
+        font-size: 0.9rem;
+    }
+
+    .bokeh-light {
+        transform: scale(0.6);
+    }
+}
