@@ -39,7 +39,81 @@ export class PersonalizationManager {
         } else {
             console.log('ℹ️ No guest parameter found, using default text');
             this.useDefaultText();
+
+            // Check if we have URL params but failed to decode (likely in-app browser issue)
+            this.checkInAppBrowserIssue();
         }
+    }
+
+    /**
+     * Check if there's a decode issue in in-app browser and show notification
+     */
+    checkInAppBrowserIssue() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasDataParam = urlParams.has('data');
+        const isInAppBrowser = URLParamsEncoder.isInAppBrowser();
+
+        if (hasDataParam && !this.guestName && isInAppBrowser) {
+            console.warn('⚠️ In-app browser detected with decode failure');
+            this.showInAppBrowserNotification();
+        }
+    }
+
+    /**
+     * Show notification for in-app browser users to open in real browser
+     */
+    showInAppBrowserNotification() {
+        const banner = document.createElement('div');
+        banner.id = 'in-app-browser-banner';
+        banner.innerHTML = `
+            <div style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+                color: white;
+                padding: 12px 20px;
+                text-align: center;
+                z-index: 10000;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                font-size: 14px;
+                line-height: 1.5;
+            ">
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <strong>📱 Vui lòng mở trong trình duyệt</strong><br>
+                    <span style="font-size: 12px;">Nhấn vào menu (⋯) và chọn "Mở trong trình duyệt" để xem thiệp cá nhân hóa</span>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    position: absolute;
+                    top: 50%;
+                    right: 15px;
+                    transform: translateY(-50%);
+                    background: rgba(255,255,255,0.3);
+                    border: none;
+                    color: white;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 18px;
+                    line-height: 1;
+                ">×</button>
+            </div>
+        `;
+
+        document.body.insertBefore(banner, document.body.firstChild);
+
+        // Add padding to body to prevent content from being hidden
+        document.body.style.paddingTop = '80px';
+
+        // Auto-hide after 10 seconds
+        setTimeout(() => {
+            if (banner.parentElement) {
+                banner.remove();
+                document.body.style.paddingTop = '0';
+            }
+        }, 10000);
     }
 
     /**
