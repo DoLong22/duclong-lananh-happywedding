@@ -34,6 +34,9 @@ export class PersonalizationManager {
             sessionStorage.setItem('guestName', this.guestName);
             sessionStorage.setItem('venue', this.venue);
 
+            // Update meta tags for personalized sharing
+            this.updateMetaTags();
+
             // Apply venue-specific customizations
             this.applyVenueCustomizations();
         } else {
@@ -43,6 +46,33 @@ export class PersonalizationManager {
             // Check if we have URL params but failed to decode (likely in-app browser issue)
             this.checkInAppBrowserIssue();
         }
+    }
+
+    /**
+     * Update meta tags for personalized sharing
+     * Note: This only affects browsers, not Facebook crawler (which doesn't run JS)
+     */
+    updateMetaTags() {
+        const baseUrl = 'https://duclong-lananh-happywedding.vercel.app/';
+
+        // Update title
+        const title = `Thư Mời Tiệc Cưới - ${this.guestName}`;
+        document.title = title;
+
+        // Update OG title
+        let ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+            ogTitle.setAttribute('content', title);
+        }
+
+        // Update OG description with guest name
+        let ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+            const desc = `Kính mời ${this.guestName} đến dự buổi lễ cưới của chúng tôi - 28.12.2025`;
+            ogDesc.setAttribute('content', desc);
+        }
+
+        console.log('✅ Updated meta tags for:', this.guestName);
     }
 
     /**
