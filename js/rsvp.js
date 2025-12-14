@@ -241,11 +241,16 @@ export function initRSVPForm() {
             return;
         }
 
+        // Get venue from the invitation card
+        const venueNameElement = document.getElementById('venue-name');
+        const venueName = venueNameElement ? venueNameElement.textContent.trim() : 'Tư Gia Nhà Trai';
+
         // Basic RSVP data
         const rsvpData = {
             name: name,
             guestSide: guestSide,
             attendance: attendance,
+            venue: venueName,
             timestamp: new Date().toISOString()
         };
 
