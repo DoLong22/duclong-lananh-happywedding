@@ -123,8 +123,20 @@ export class URLParamsEncoder {
         }
 
         // Check for encrypted format first
-        const encodedData = urlParams.get('data');
+        let encodedData = urlParams.get('data');
         if (encodedData) {
+            // URLSearchParams.get() auto-decodes, but double-check for safety
+            // This handles cases where URL was manually constructed
+            try {
+                const potentiallyDecoded = decodeURIComponent(encodedData);
+                if (potentiallyDecoded !== encodedData) {
+                    console.log('🔄 URL component was double-encoded, using decoded version');
+                    encodedData = potentiallyDecoded;
+                }
+            } catch (e) {
+                // Already decoded or malformed, use as-is
+            }
+
             // Try multiple decode methods for compatibility
             let decoded = this.decode(encodedData);
 
@@ -167,7 +179,9 @@ export class URLParamsEncoder {
             return baseUrl;
         }
 
-        return `${baseUrl}?data=${encoded}`;
+        // Encode query parameter for URL safety
+        // This prevents Messenger/mobile apps from double-encoding
+        return `${baseUrl}?data=${encodeURIComponent(encoded)}`;
     }
 }
 
